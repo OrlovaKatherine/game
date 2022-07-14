@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <title>Быки и коровы</title>
+  <body>
+    <h1>  Игра "Быки и коровы"</h1>
+<pre>
+      Компьютер загадывает число из нескольких различающихся цифр (от 3 до 6). Игроку дается бесконечное число попыток на то, чтобы угадать это число.
+
+
+   После каждой попытки компьютер сообщает количество совпавших цифр стоящих не на своих местах (коровы), а также количество правильных цифр на своих местах (быки).
+
+
+   Например загаданное число: 56478 предположение игрока: 52976
+
+
+   Ответ: совпавших цифр не на своих местах - 1 (6), цифр на своих местах - 2 (5 и 7)
+
+
+   Игра ведется до отгадывания или пока не надоест.
+      </pre>
+      <input id = 'game'type="button" onclick ="game()" value="Играть!">
+    
+  <script> 
+  game.onclick = function game() {
+
+    let s = [];
+    // let b = 0;
+    // let k = 0;
+ 
+
+  function RND(max) {
+  return Math.floor(Math.random()*max);
+}
+
+  let s3 = '', s4 = '', s5 = ''; s6 = '';
+  
+for (let i = 0; i < 3; i++){
+  do{
+    var x = RND(9);
+  }
+ while (s3.indexOf(x)>=0); 
+ s3 = s3+x;
+  }
+ 
+
+  for (let i = 0; i < 4; i++){
+    do{
+  var x = RND(9);
+  }
+  while (s4.indexOf(x)>=0); 
+ s4 = s4+x;
+  }
+
+
+  for (let i = 0; i < 5; i++){
+    do{
+    var x = RND(9);
+  }
+  while (s5.indexOf(x)>=0); 
+  s5 = s5+x;
+  }
+ 
+
+  for (let i = 0; i < 6; i++){
+    do{
+      var x = RND(9);
+  }
+  while (s6.indexOf(x)>=0); 
+s6 = s6+x;
+  }
+
+s[0] = s3;
+s[1] = s4;
+s[2] = s5;
+s[3] = s6;
+
+let computerNumber = s[Math.floor(Math.random() * s.length)];
+//alert(computerNumber);
+
+
+if (computerNumber.length == 3){  
+do{
+  b = 0;
+  k = 0;
+  attempt = prompt('Введите трехзначное число','');
+  for (var i = 0; i < 3; i++){
+if (computerNumber[i] == attempt[i]) b++;
+else if (computerNumber.indexOf(attempt[i])>=0 && computerNumber[i] !== attempt[i]) k++;
+  }
+  var result = 'Ваше число: '+ attempt +' ,быки: ' + b + ' ,коровы: ' + k;
+alert(result);
+  }while(b < computerNumber.length);
+
+
+
+}else if (computerNumber.length == 4){
+  do{
+    b = 0;
+    k = 0;
+    attempt = prompt('Введите четырехзначное число','');
+  for (var i = 0; i < 4; i++){
+if (computerNumber[i] == attempt[i]) b++;
+else if (computerNumber.indexOf(attempt[i])>=0 && computerNumber[i] !== attempt[i]) k++;
+  }
+  var result = 'Ваше число: '+ attempt +' ,быки: ' + b + ' ,коровы: ' + k;
+alert(result);
+}while(b < computerNumber.length);
+
+
+}else if (computerNumber.length == 5){
+  do{
+    b = 0;
+    k = 0;
+    attempt = prompt('Введите пятизначное число','');
+      for (var i = 0; i < 5; i++){
+if (computerNumber[i] == attempt[i]) b++;
+else if (computerNumber.indexOf(attempt[i])>=0 && computerNumber[i] !== attempt[i]) k++;
+  }
+  var result = 'Ваше число: '+ attempt +' ,быки: ' + b + ' ,коровы: ' + k;
+alert(result);
+}while(b < computerNumber.length);
+
+
+}else {
+
+  do{
+    b = 0;
+    k = 0;
+    attempt= prompt('Введите шестизначное число','');
+  for (var i = 0; i < 6; i++){
+if (computerNumber[i] == attempt[i]) b++;
+else if (computerNumber.indexOf(attempt[i])>=0 && computerNumber[i] !== attempt[i]) k++;
+  }
+  var result = 'Ваше число: '+ attempt +' ,быки: ' + b + ' ,коровы: ' + k;
+alert(result);
+}while(b < computerNumber.length);
+
+}
+ 
+ if (b == computerNumber.length) alert('Угадали!');
+
+}
+
+game();
+
+
+    </script>
+  </body>
+</html>
+ 
